@@ -13,7 +13,7 @@ jobs:
       - name: Setup Graphviz
         uses: ts-graphviz/setup-graphviz@v1
       - name: Compile DOT
-        run: dot -Tsvg -o output.svg definitions-graph.dot
+        run: dot -Tsvg -o index.svg definitions-graph.dot
       - uses: JamesIves/github-pages-deploy-action@v4.4.0
         with:
           branch: gh-pages

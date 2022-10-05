@@ -1,4 +1,3 @@
-@startdot
 digraph a {
 node[colorscheme=set312;style=filled]
 clusterrank=global
@@ -177,7 +176,7 @@ subgraph cluster_linear_algebra {
 
     row_echelon_form[label="Матрица ступенчатого вида"]
     row_echelon_form -> real_matrix
-
+ 
     real_matrix_space -> real_matrix
     real_matrix_space -> linear_space
     matrix_multiplication[label="Умножение матриц"]
@@ -274,4 +273,3 @@ sequence_limit[label="Предел последовательности"]
 sequence_limit -> real_sequence
 sequence_limit -> neighborhood
 }
-@enddot

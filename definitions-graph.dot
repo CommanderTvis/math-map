@@ -2,6 +2,7 @@ digraph a {
 node[colorscheme=set312;style=filled]
 clusterrank=global
 graph[style=dotted]
+edge [dir="back"]
 subgraph cluster_set_theory {
     label="Теория множеств"
     node[fillcolor = 1]

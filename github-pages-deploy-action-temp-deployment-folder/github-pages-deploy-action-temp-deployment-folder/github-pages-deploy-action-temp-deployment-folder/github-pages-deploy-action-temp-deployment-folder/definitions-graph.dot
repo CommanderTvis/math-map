@@ -77,6 +77,7 @@ subgraph cluster_set_theory {
 
             real_function[label="Функция ℝ → ℝ"]
             real_function -> function
+            real_function -> real_number
         }
 
         // Order theory
@@ -175,7 +176,7 @@ subgraph cluster_linear_algebra {
 
     row_echelon_form[label="Матрица ступенчатого вида"]
     row_echelon_form -> real_matrix
-
+ 
     real_matrix_space -> real_matrix
     real_matrix_space -> linear_space
     matrix_multiplication[label="Умножение матриц"]
@@ -234,6 +235,7 @@ subgraph cluster_number_systems {
     integer_number -> equivalence_class
     integer_number -> natural_monoid_additive
 
+    // Rational numbers
     rational_number[label="Рациональное число ℚ"]
     rational_field[label="Поле (ℚ, +, ⋅, ⩽)"]
 
@@ -247,6 +249,7 @@ subgraph cluster_number_systems {
     irrational_number -> real_number
     irrational_number -> complement
 
+    // Real numbers
     real_number[label="Действительное число ℝ (дедекиндово сечение)"]
     real_field[label="Поле (ℝ, +, ⋅, ⩽)"]
     real_number -> rational_field
@@ -256,7 +259,6 @@ subgraph cluster_number_systems {
     real_field -> real_number
     real_sequence -> real_number
     real_matrix -> real_number
-    real_function -> real_number
     real_matrix_space -> real_field
     matrix_multiplication -> real_field
 }

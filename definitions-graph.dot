@@ -147,6 +147,10 @@ subgraph cluster_linear_algebra {
     linear_manifold[label="Линейное многообразие"]
     basis[label="Базис"]
 
+    linear_equivalence[label="Линейная эквивалентность"]
+    linear_equivalence -> linear_combination
+    linear_equivalence -> equivalence
+
     linear_space -> abelian_group
     linear_space -> field
     linear_subspace -> linear_space

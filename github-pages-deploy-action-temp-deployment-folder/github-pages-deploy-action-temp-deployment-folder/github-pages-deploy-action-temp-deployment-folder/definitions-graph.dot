@@ -195,7 +195,7 @@ subgraph cluster_linear_algebra {
     determinant -> minor
 
     algebraic_complement[label="Алгебраическое дополнение"]
-    minor -> algebraic_complement
+    algebraic_complement -> minor
 
     adjugate_matrix[label="Присоединенная матрица"]
     adjugate_matrix -> algebraic_complement
@@ -211,7 +211,7 @@ subgraph cluster_linear_algebra {
 subgraph cluster_number_systems {
     label = "Числовые системы"
     node[fillcolor = 8]
-    // Natural numbers
+
     natural_number[label="Натуральное число ℕ"]
     natural_monoid_additive[label="Моноид (ℕ, +)"]
     natural_monoid_multiplicative[label="Моноид (ℕ, ⋅)"]
@@ -225,7 +225,6 @@ subgraph cluster_number_systems {
     sequence -> natural_number
     real_matrix -> natural_number
 
-    // Integer numbers
     integer_number[label="Целое число ℤ"]
     integer_ring[label="Кольцо (ℤ, +, ⋅)"]
     integer_ring -> integer_number

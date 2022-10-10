@@ -2,7 +2,6 @@ digraph a {
 node[colorscheme=set312;style=filled]
 clusterrank=global
 graph[style=dotted]
-edge [dir="back"]
 subgraph cluster_set_theory {
     label="Теория множеств"
     node[fillcolor = 1]
@@ -15,7 +14,7 @@ subgraph cluster_set_theory {
     tuple[label="Упорядоченный набор"]
     partition[label="Разбиение"]
     disjoint_union[label="Дизъюнктное объединение ⊔"]
-    complement[label="Разность множеств \\"]
+    complement[label="Разность множеств"]
     inductive_set[label="Индуктивное множество"]
 
     empty_set -> set
@@ -78,6 +77,7 @@ subgraph cluster_set_theory {
 
             real_function[label="Функция ℝ → ℝ"]
             real_function -> function
+            real_function -> real_number
         }
 
         // Order theory
@@ -111,6 +111,7 @@ subgraph cluster_set_theory {
             equivalence_class[label="Класс эквивалентности"]
             equivalence_class -> equivalence
             equivalence -> finitary_relation
+            equivalence_class -> partition
         }
     }
 }
@@ -146,10 +147,6 @@ subgraph cluster_linear_algebra {
     linear_manifold[label="Линейное многообразие"]
     basis[label="Базис"]
 
-    linear_equivalence[label="Линейная эквивалентность"]
-    linear_equivalence -> linear_combination
-    linear_equivalence -> equivalence
-
     linear_space -> abelian_group
     linear_space -> field
     linear_subspace -> linear_space
@@ -179,7 +176,7 @@ subgraph cluster_linear_algebra {
 
     row_echelon_form[label="Матрица ступенчатого вида"]
     row_echelon_form -> real_matrix
-
+ 
     real_matrix_space -> real_matrix
     real_matrix_space -> linear_space
     matrix_multiplication[label="Умножение матриц"]
@@ -199,7 +196,7 @@ subgraph cluster_linear_algebra {
     determinant -> minor
 
     algebraic_complement[label="Алгебраическое дополнение"]
-    algebraic_complement -> minor
+    minor -> algebraic_complement
 
     adjugate_matrix[label="Присоединенная матрица"]
     adjugate_matrix -> algebraic_complement
@@ -208,20 +205,14 @@ subgraph cluster_linear_algebra {
     rank -> minor
     rank -> basis
 
-    linear_system[label="СЛУ (матричная форма)"]
-    linear_system -> real_matrix
-
-    block_matrix[label="Блочная матрица"]
-    block_matrix -> real_matrix
-
-    matrix_trace[label="След матрицы"]
-    matrix_trace -> real_matrix
+    augmented_matrix[label="Расширенная матрица СЛУ"]
+    augmented_matrix -> real_matrix
 }
 
 subgraph cluster_number_systems {
     label = "Числовые системы"
     node[fillcolor = 8]
-
+    // Natural numbers
     natural_number[label="Натуральное число ℕ"]
     natural_monoid_additive[label="Моноид (ℕ, +)"]
     natural_monoid_multiplicative[label="Моноид (ℕ, ⋅)"]
@@ -235,6 +226,7 @@ subgraph cluster_number_systems {
     sequence -> natural_number
     real_matrix -> natural_number
 
+    // Integer numbers
     integer_number[label="Целое число ℤ"]
     integer_ring[label="Кольцо (ℤ, +, ⋅)"]
     integer_ring -> integer_number
@@ -243,6 +235,7 @@ subgraph cluster_number_systems {
     integer_number -> equivalence_class
     integer_number -> natural_monoid_additive
 
+    // Rational numbers
     rational_number[label="Рациональное число ℚ"]
     rational_field[label="Поле (ℚ, +, ⋅, ⩽)"]
 
@@ -256,6 +249,7 @@ subgraph cluster_number_systems {
     irrational_number -> real_number
     irrational_number -> complement
 
+    // Real numbers
     real_number[label="Действительное число ℝ (дедекиндово сечение)"]
     real_field[label="Поле (ℝ, +, ⋅, ⩽)"]
     real_number -> rational_field
@@ -265,25 +259,17 @@ subgraph cluster_number_systems {
     real_field -> real_number
     real_sequence -> real_number
     real_matrix -> real_number
-    real_function -> real_number
     real_matrix_space -> real_field
     matrix_multiplication -> real_field
 }
 
-epsilon_neighborhood[label="ε-окрестность (x−ε, x+ε)"]
-epsilon_neighborhood -> real_field
-epsilon_neighborhood -> interval
-deleted_epsilon_neighborhood[label="Проколотая ε-окрестность (x−ε, x) ∪ (x, x+ε)"]
-deleted_epsilon_neighborhood -> epsilon_neighborhood
-deleted_epsilon_neighborhood -> union
+neighborhood[label="Окрестность (x−ε, x+ε)"]
+neighborhood -> real_field
+neighborhood -> interval
+deleted_neighborhood[label="Проколотая окрестность (x−ε, x) ∪ (x, x+ε)"]
+deleted_neighborhood -> neighborhood
+deleted_neighborhood -> union   
 sequence_limit[label="Предел последовательности"]
 sequence_limit -> real_sequence
-sequence_limit -> epsilon_neighborhood
-infinitesimal_sequence[label="Бесконечно малая последовательность"]
-infinitesimal_sequence -> sequence_limit
-subsequential_limit[label="Частичный предел"]
-subsequential_limit -> sequence_limit
-limit_superior_inferior[label="Верхний (ниж.) предел"]
-limit_superior_inferior -> subsequential_limit
-limit_superior_inferior -> supremum_infimum
+sequence_limit -> neighborhood
 }

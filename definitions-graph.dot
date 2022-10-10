@@ -213,6 +213,9 @@ subgraph cluster_linear_algebra {
 
     block_matrix[label="Блочная матрица"]
     block_matrix -> real_matrix
+
+    matrix_trace[label="След матрицы"]
+    matrix_trace -> real_matrix
 }
 
 subgraph cluster_number_systems {
@@ -276,8 +279,11 @@ deleted_epsilon_neighborhood -> union
 sequence_limit[label="Предел последовательности"]
 sequence_limit -> real_sequence
 sequence_limit -> epsilon_neighborhood
+infinitesimal_sequence[label="Бесконечно малая последовательность"]
+infinitesimal_sequence -> sequence_limit
 subsequential_limit[label="Частичный предел"]
 subsequential_limit -> sequence_limit
 limit_superior_inferior[label="Верхний (ниж.) предел"]
 limit_superior_inferior -> subsequential_limit
+limit_superior_inferior -> supremum_infimum
 }

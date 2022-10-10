@@ -106,7 +106,6 @@ subgraph cluster_set_theory {
         // Order theory
         subgraph cluster_equivalence {
             label = "Эквивалентность"
-            node[fillcolor = 5]
             equivalence[label="Эквивалентность ~"]
             equivalence_class[label="Класс эквивалентности"]
             equivalence_class -> equivalence
@@ -117,7 +116,7 @@ subgraph cluster_set_theory {
 // Abstract algebra
 subgraph cluster_abstract_algebra {
     label="Алгебраические структуры"
-    node[fillcolor = 6]
+    node[fillcolor = 5]
     semigroup[label="Полугруппа"]
     monoid[label="Моноид"]
     group[label="Группа"]
@@ -137,7 +136,7 @@ subgraph cluster_abstract_algebra {
 
 subgraph cluster_linear_algebra {
     label="Линейная алгебра"
-    node[fillcolor = 7]
+    node[fillcolor = 6]
     linear_space[label="Линейное пространство"]
     linear_subspace[label="Линейное подпространство"]
     linear_combination[label="Линейная комбинация"]
@@ -220,7 +219,7 @@ subgraph cluster_linear_algebra {
 
 subgraph cluster_number_systems {
     label = "Числовые системы"
-    node[fillcolor = 8]
+    node[fillcolor = 7]
 
     natural_number[label="Натуральное число ℕ"]
     natural_monoid_additive[label="Моноид (ℕ, +)"]
@@ -269,21 +268,25 @@ subgraph cluster_number_systems {
     real_matrix_space -> real_field
     matrix_multiplication -> real_field
 }
+subgraph cluster_analysis {
+    label = "Анализ"
+    node[fillcolor = 8]
 
-epsilon_neighborhood[label="ε-окрестность (x−ε, x+ε)"]
-epsilon_neighborhood -> real_field
-epsilon_neighborhood -> interval
-deleted_epsilon_neighborhood[label="Проколотая ε-окрестность (x−ε, x) ∪ (x, x+ε)"]
-deleted_epsilon_neighborhood -> epsilon_neighborhood
-deleted_epsilon_neighborhood -> union
-sequence_limit[label="Предел последовательности"]
-sequence_limit -> real_sequence
-sequence_limit -> epsilon_neighborhood
-infinitesimal_sequence[label="Бесконечно малая последовательность"]
-infinitesimal_sequence -> sequence_limit
-subsequential_limit[label="Частичный предел"]
-subsequential_limit -> sequence_limit
-limit_superior_inferior[label="Верхний (ниж.) предел"]
-limit_superior_inferior -> subsequential_limit
-limit_superior_inferior -> supremum_infimum
+    epsilon_neighborhood[label="ε-окрестность (x−ε, x+ε)"]
+    epsilon_neighborhood -> real_field
+    epsilon_neighborhood -> interval
+    deleted_epsilon_neighborhood[label="Проколотая ε-окрестность (x−ε, x) ∪ (x, x+ε)"]
+    deleted_epsilon_neighborhood -> epsilon_neighborhood
+    deleted_epsilon_neighborhood -> union
+    sequence_limit[label="Предел последовательности"]
+    sequence_limit -> real_sequence
+    sequence_limit -> epsilon_neighborhood
+    infinitesimal_sequence[label="Бесконечно малая последовательность"]
+    infinitesimal_sequence -> sequence_limit
+    subsequential_limit[label="Частичный предел"]
+    subsequential_limit -> sequence_limit
+    limit_superior_inferior[label="Верхний (ниж.) предел"]
+    limit_superior_inferior -> subsequential_limit
+    limit_superior_inferior -> supremum_infimum
+}
 }

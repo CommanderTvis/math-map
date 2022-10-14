@@ -144,6 +144,13 @@ subgraph cluster_linear_algebra {
     linear_span[label="Линейная оболочка"]
     linear_manifold[label="Линейное многообразие"]
     basis[label="Базис"]
+    dot_product[label="Скалярное произведение"]
+    dot_product -> linear_space
+    cross_product[label="Векторное произведение"]
+    cross_product -> linear_space
+    triple_product[label="Смешанное произведение"]
+    triple_product -> cross_product
+    triple_product -> dot_product
 
     linear_equivalence[label="Линейная эквивалентность"]
     linear_equivalence -> linear_combination
@@ -191,11 +198,11 @@ subgraph cluster_linear_algebra {
     inverse_matrix -> matrix_multiplication
 
     determinant[label="Определитель"]
-    real_matrix -> determinant
-    permutation -> determinant
+    determinant -> real_matrix
+    determinant -> permutation
 
     minor[label="Минор"]
-    determinant -> minor
+    minor -> determinant
 
     algebraic_complement[label="Алгебраическое дополнение"]
     algebraic_complement -> minor
@@ -204,8 +211,7 @@ subgraph cluster_linear_algebra {
     adjugate_matrix -> algebraic_complement
 
     rank[label="Ранг"]
-    rank -> minor
-    rank -> basis
+    rank -> linear_independence
 
     linear_system[label="СЛУ (матричная форма)"]
     linear_system -> real_matrix
@@ -250,10 +256,6 @@ subgraph cluster_number_systems {
     rational_field -> ordered_field
     rational_field -> rational_number
     rational_field -> integer_ring
-
-    irrational_number[label="Иррациональное число"]
-    irrational_number -> real_number
-    irrational_number -> complement
 
     real_number[label="Действительное число ℝ (дедекиндово сечение)"]
     real_field[label="Поле (ℝ, +, ⋅, ⩽)"]

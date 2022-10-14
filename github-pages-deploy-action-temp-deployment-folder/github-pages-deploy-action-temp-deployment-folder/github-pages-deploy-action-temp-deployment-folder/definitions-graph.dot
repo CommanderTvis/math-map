@@ -15,7 +15,7 @@ subgraph cluster_set_theory {
     tuple[label="Упорядоченный набор"]
     partition[label="Разбиение"]
     disjoint_union[label="Дизъюнктное объединение ⊔"]
-    complement[label="Разность множеств"]
+    complement[label="Разность множеств \\"]
     inductive_set[label="Индуктивное множество"]
 
     empty_set -> set
@@ -111,7 +111,6 @@ subgraph cluster_set_theory {
             equivalence_class[label="Класс эквивалентности"]
             equivalence_class -> equivalence
             equivalence -> finitary_relation
-            equivalence_class -> partition
         }
     }
 }
@@ -209,8 +208,11 @@ subgraph cluster_linear_algebra {
     rank -> minor
     rank -> basis
 
-    augmented_matrix[label="Расширенная матрица СЛУ"]
-    augmented_matrix -> real_matrix
+    linear_system[label="СЛУ (матричная форма)"]
+    linear_system -> real_matrix
+
+    block_matrix[label="Блочная матрица"]
+    block_matrix -> real_matrix
 }
 
 subgraph cluster_number_systems {
@@ -265,13 +267,17 @@ subgraph cluster_number_systems {
     matrix_multiplication -> real_field
 }
 
-neighborhood[label="Окрестность (x−ε, x+ε)"]
-neighborhood -> real_field
-neighborhood -> interval
-deleted_neighborhood[label="Проколотая окрестность (x−ε, x) ∪ (x, x+ε)"]
-deleted_neighborhood -> neighborhood
-deleted_neighborhood -> union   
+epsilon_neighborhood[label="ε-окрестность (x−ε, x+ε)"]
+epsilon_neighborhood -> real_field
+epsilon_neighborhood -> interval
+deleted_epsilon_neighborhood[label="Проколотая ε-окрестность (x−ε, x) ∪ (x, x+ε)"]
+deleted_epsilon_neighborhood -> epsilon_neighborhood
+deleted_epsilon_neighborhood -> union
 sequence_limit[label="Предел последовательности"]
 sequence_limit -> real_sequence
-sequence_limit -> neighborhood
+sequence_limit -> epsilon_neighborhood
+subsequential_limit[label="Частичный предел"]
+subsequential_limit -> sequence_limit
+limit_superior_inferior[label="Верхний (ниж.) предел"]
+limit_superior_inferior -> subsequential_limit
 }
